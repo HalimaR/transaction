@@ -1,5 +1,7 @@
 package edu.ap.spring.controller;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +24,7 @@ public class BchainController {
     private Wallet coinbase, walletA, walletB;
     private Transaction genesisTransaction;
 
+    @PostConstruct
     private void init() {
         bChain.setSecurity();
         coinbase.generateKeyPair();
