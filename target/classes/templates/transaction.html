@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th='http://www.thymeleaf.org'>
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+<link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+
+<title>Wallet Balance</title>
+</head>
+
+<body>
+<div>
+    <h1>Voer een transaction uit</h1>
+   
+    <form th:action='@{/transaction}' method='POST'>
+        <div>
+            <label >from : </label>
+            <input type='text'name='wallet1' id='wallet1'>
+        </div>
+
+        <div >
+            <label >To : </label>
+            <input type='text' name='wallet2' id='wallet2'>
+        </div>
+
+        <div >
+            <label for='amount'>Amount : </label>
+            <input type='text' name='amount' id='amount'>
+        </div>
+            
+        <input type='SUBMIT' value='Send'>
+</form>
+
+</div>
+
+</body>
+</html>
