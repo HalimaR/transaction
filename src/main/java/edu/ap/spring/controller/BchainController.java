@@ -22,7 +22,7 @@ public class BchainController {
     private Wallet coinbase, walletA, walletB;
     private Transaction genesisTransaction;
 
-    public void init() {
+    private void init() {
         bChain.setSecurity();
         coinbase.generateKeyPair();
         walletA.generateKeyPair();
@@ -42,9 +42,22 @@ public class BchainController {
     
     @GetMapping("/")
     public String index(){
-        return "balance";
+        return "redirect:/balance/walletA";
     }
     
+    @GetMapping("/balance/{wallet}")
+    public String getBalance(@PathVariable("wallet") String wallet, Model model) {
+        model.addAttribute("wallet", wallet);
+        System.out.println(" geeft ");
+        if(wallet.equalsIgnoreCase("walletA")){
+            model.addAttribute("balance", walletA.getBalance());
+            System.out.println(" geeft"+ walletA.getBalance());
+        } else if(wallet.equalsIgnoreCase("walletB")){
+            model.addAttribute("balance", walletB.getBalance());
+            System.out.println(" geeft" + walletB.getBalance());
+        }
+        return "balance";
+    }
 
     @GetMapping("/transaction")
     public String getTrans(){
